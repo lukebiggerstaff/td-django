@@ -30,7 +30,8 @@ class NewVisitor(LiveServerTestCase):
                     raise e
                 time.sleep(0.5)
 
-    def test_can_start_a_list_and_retrieve_it_later(self):
+
+    def test_can_start_a_list_for_one_user(self):
         self.browser.get(self.live_server_url)
 
         self.assertIn('To-Do', self.browser.title)
@@ -51,12 +52,6 @@ class NewVisitor(LiveServerTestCase):
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
 
-        self.wait_for_row_in_list_table('1: Buy peacock feathers')
-        self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
-
-        self.fail('Finish the test!')
-
-    def test_can_start_a_list_for_one_user(self):
         self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
@@ -91,3 +86,4 @@ class NewVisitor(LiveServerTestCase):
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
 
+        self.fail('Finish the test!')
