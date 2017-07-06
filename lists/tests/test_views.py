@@ -69,7 +69,7 @@ class NewItemTest(TestCase):
         correct_list = List.objects.create()
 
         self.client.post(
-            '/lists/{}/add_item'.format(correct_list.id),
+            '/lists/{}/'.format(correct_list.id),
             data={'item_text': 'A new item for an existing list'}
         )
 
@@ -84,7 +84,7 @@ class NewItemTest(TestCase):
         correct_list = List.objects.create()
 
         response = self.client.post(
-            '/lists/{}/add_item'.format(correct_list.id),
+            '/lists/{}/'.format(correct_list.id),
             data = {'item_text': 'A new item for an existing list'}
         )
 
